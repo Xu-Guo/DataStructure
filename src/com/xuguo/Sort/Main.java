@@ -10,27 +10,27 @@ public class Main {
 
         int[] array = {6, 4, 5, 1, 7, 2, 4, 3, 4, 8};
 
-        main.sort(array);
+        main.mergeSort(array);
         for (int n : array) {
             System.out.println(n);
         }
 
     }
 
-    public void sort(int[] a) {
+    public void mergeSort(int[] a) {
         int[] temp = new int[a.length];
-        mergeSort(a, temp, 0, a.length - 1);
+        mergeSortHelper(a, temp, 0, a.length - 1);
     }
 
 
-    public void mergeSort(int[] a, int[] temp, int left, int right) {//left and right are index
+    public void mergeSortHelper(int[] a, int[] temp, int left, int right) {//left and right are index
         if (left >= right) {
             return;
         }
 
         int middle = left + (right - left) / 2;
-        mergeSort(a, temp, left, middle);
-        mergeSort(a, temp, middle + 1, right);
+        mergeSortHelper(a, temp, left, middle);
+        mergeSortHelper(a, temp, middle + 1, right);
         merge(a, temp, left, middle, right);
     }
 
